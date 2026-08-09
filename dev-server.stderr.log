@@ -1,0 +1,98 @@
+npm warn Unknown env config "min-release-age". This will stop working in the next major version of npm.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+[2m21:24:38[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mWarning: Setting up fake worker.
+[2m21:24:38[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Uncaught TypeError: Failed to fetch dynamically imported module: file:///node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs
+[39m > ../../@vite/client:516:55
+
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+[2m22:02:29[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mWarning: Setting up fake worker.
+[2m22:02:29[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Uncaught ReferenceError: window is not defined
+[39m > ../../@vite/client:516:55
+
+[2m22:32:41[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mWarning: Setting up fake worker.
+[2m22:32:41[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Uncaught ReferenceError: window is not defined
+[39m > ../../@vite/client:516:55
+
+[2m22:50:31[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mWarning: Setting up fake worker.
+[2m22:50:31[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Uncaught ReferenceError: window is not defined
+[39m > ../../@vite/client:516:55
+
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported.
+[2m23:16:34[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Uncaught ReferenceError: window is not defined
+[39m > ../../@vite/client:516:55
+
+[2m23:19:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mA tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <meta>
+    <title>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <link>
+    <link>
+    <link>
+    <link>
+    <meta>
+    <GlobalErrorBoundary fallback={function DefaultGlobalError}>
+      <ErrorBoundaryInner pathname="/" fallback={function DefaultGlobalError} isImplicitRootErrorBoundary={true}>
+        <ErrorBoundary fallback={function DefaultGlobalError}>
+          <ErrorBoundaryInner pathname="/" resetKey={undefined} fallback={function DefaultGlobalError}>
+            <LayoutSegmentProvider providerId="layout:/" segmentMap={{children:[...]}}>
+              <Slot id="layout:/">
+                <BfcacheSlotBoundary id="layout:/" content={<Context>}>
+                  <default>
+                    <link>
+                    <RemoveDuplicateServerCss>
+                    <default>
+                      <RootLayout>
+                        <html
++                         lang="en"
+-                         lang="zh-CN"
+-                         className="translated-ltr"
+                        >
+
+[2m23:20:08[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Uncaught ReferenceError: window is not defined
+[39m > ../../@vite/client:516:55
+
