@@ -101,7 +101,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <div className="container">
           <div className="section-heading section-heading-centered"><span className="section-kicker">A simpler way to work</span><h2>{seo.benefitsTitle}</h2><p>Keep the important choices visible, then move from source file to finished download without extra steps.</p></div>
           <div className="tool-benefit-grid">
-            <Benefit icon="✓" title="Free from the first click" text={tool.slug === "jpg-to-pdf" ? "Convert your files without a paid plan, trial countdown, or hidden sign-up screen." : tool.slug === "img-to-word" ? "Create an editable Word document without a paid plan, trial countdown, or hidden sign-up screen." : tool.slug === "pdf-to-img" ? "Export PDF pages without a paid plan, trial countdown, or hidden sign-up screen." : tool.slug === "tif-to-jpeg" ? "Convert a TIF or TIFF file without a paid plan, trial countdown, or hidden sign-up screen." : `Use ${seo.keyword} without a paid plan, trial countdown, or hidden sign-up screen.`} />
+            <Benefit icon="✓" title="Free from the first click" text={tool.slug === "jpg-to-pdf" ? "Convert your files without a paid plan, trial countdown, or hidden sign-up screen." : tool.slug === "img-to-word" ? "Create an editable Word document without a paid plan, trial countdown, or hidden sign-up screen." : tool.slug === "pdf-to-img" ? "Export PDF pages without a paid plan, trial countdown, or hidden sign-up screen." : tool.slug === "pdf-to-word" ? "Convert your PDF without a paid plan, trial countdown, or hidden sign-up screen." : tool.slug === "tif-to-jpeg" ? "Convert a TIF or TIFF file without a paid plan, trial countdown, or hidden sign-up screen." : `Use ${seo.keyword} without a paid plan, trial countdown, or hidden sign-up screen.`} />
             <Benefit icon="✓" title="No account required" text="Open the page, add your file, and start working immediately. Your workflow does not depend on a profile." />
             <Benefit icon="✓" title="Clear controls" text={`Adjust ${tool.options.slice(0, 2).join(" and ").toLowerCase()} before you create the ${tool.outputLabel.toLowerCase()}.`} />
             <Benefit icon="✓" title="A clear finish" text={browserReady ? "The result is prepared in the workspace and the browser starts the download when conversion completes." : "The workspace explains the worker requirement instead of presenting an unverified result."} />
@@ -121,7 +121,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           <article>
             <span className="section-kicker">Learn before you convert</span>
             <h2>{seo.detailTitle}</h2>
-            {tool.slug === "jpg-to-pdf" ? <JpgDetailContent /> : tool.slug === "img-to-pdf" ? <ImageToPdfDetailContent /> : tool.slug === "img-to-word" ? <ImgToWordDetailContent /> : tool.slug === "png-to-pdf" ? <PngToPdfDetailContent /> : tool.slug === "pdf-to-img" ? <PdfToImgDetailContent /> : tool.slug === "tif-to-jpeg" ? <TifToJpegDetailContent /> : tool.slug === "compress-pdf" ? <CompressPdfDetailContent /> : <>
+            {tool.slug === "jpg-to-pdf" ? <JpgDetailContent /> : tool.slug === "img-to-pdf" ? <ImageToPdfDetailContent /> : tool.slug === "img-to-word" ? <ImgToWordDetailContent /> : tool.slug === "pdf-to-word" ? <PdfToWordDetailContent /> : tool.slug === "png-to-pdf" ? <PngToPdfDetailContent /> : tool.slug === "pdf-to-img" ? <PdfToImgDetailContent /> : tool.slug === "tif-to-jpeg" ? <TifToJpegDetailContent /> : tool.slug === "compress-pdf" ? <CompressPdfDetailContent /> : <>
               <p>{seo.description} This free online workflow keeps the source files, ordering, and output settings in one focused place so you can finish the job without installing a desktop app.</p>
               <p>It is designed for quick everyday tasks: documents from a phone camera, screenshots, scans, receipts, presentations, and files that need one more format before they can be shared.</p>
             </>}
@@ -140,7 +140,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
       <section className="related-section">
           <div className="container">
-          <div className="section-heading split-heading"><div><span className="section-kicker">Continue your workflow</span><h2>{tool.slug === "compress-pdf" ? "Related PDF tools for your next step." : `Related ${seo.label} tools, one click away.`}</h2></div><p>{tool.slug === "compress-pdf" ? "After making a smaller file, continue with page images or an editable Word document when the next destination calls for it." : "Move naturally from images to documents, or from a PDF to the next format you need."}</p></div>
+          <div className="section-heading split-heading"><div><span className="section-kicker">Continue your workflow</span><h2>{`Related ${seo.label} tools, one click away.`}</h2></div><p>{tool.slug === "compress-pdf" ? "After making a smaller file, continue with page images or an editable Word document when the next destination calls for it." : "Move naturally from images to documents, or from a PDF to the next format you need."}</p></div>
           <div className="related-grid">{relatedTools.map((related) => related ? <Link href={getPublicToolPath(related.slug)} className="related-card" key={related.slug}><span className={`tool-card-icon ${related.tone}`}>{related.icon}</span><div><strong>{related.title}</strong><small>{related.cardDescription}</small></div><span>→</span></Link> : null)}</div>
         </div>
       </section>
@@ -233,6 +233,21 @@ function getToolSeo(tool: ToolDefinition, routeSlug = getPublicToolSlug(tool.slu
     };
   }
 
+  if (tool.slug === "pdf-to-word") {
+    return {
+      title: "PDF to Word Converter Online",
+      label: "PDF to Word",
+      keyword: "pdf to word",
+      metaTitle: "PDF to Word Converter Online | Free DOCX Tool",
+      metaDescription: "Convert PDF to Word online for free. Create editable DOCX files with selectable text and preserved graphics. Scanned PDFs may need OCR. No login required.",
+      description: "Convert PDF to Word in your browser and create a real DOCX with selectable text, visible graphics, and a readable page structure. Scanned PDFs may need OCR.",
+      benefitsTitle: "PDF to Word features",
+      guideTitle: "How to Convert PDF to Word",
+      detailTitle: "What Is PDF to Word?",
+      faqTitle: "PDF to Word FAQ",
+    };
+  }
+
   if (tool.slug === "png-to-pdf") {
     return {
       title: "PNG to PDF Converter",
@@ -273,7 +288,7 @@ function getToolSeo(tool: ToolDefinition, routeSlug = getPublicToolSlug(tool.slu
       description: "Reduce a PDF for email, uploads, or sharing in your browser. Choose a compression level, manage metadata, and download a rewritten file without an account.",
       benefitsTitle: "Compress PDF features",
       guideTitle: "How to Compress PDF Online",
-      detailTitle: "How PDF Compression Works",
+      detailTitle: "What Does Compress PDF Do?",
       faqTitle: "Compress PDF FAQ",
     };
   }
@@ -306,6 +321,9 @@ function getGuideSteps() {
 function getGuideIntro(tool: ToolDefinition) {
   if (tool.slug === "compress-pdf") {
     return "When a PDF is too large for an email or upload limit, choose a profile that fits the destination, review the result, and keep the original until the smaller copy has passed your checks.";
+  }
+  if (tool.slug === "pdf-to-word") {
+    return "Choose a text-based PDF, select a layout and page range, then review the DOCX before sharing. The browser keeps the source on your device while it prepares the editable file.";
   }
   return "Whether you are converting one photo or a full set of pages, the flow stays the same. You can see what is happening before the file leaves the workspace.";
 }
@@ -396,6 +414,29 @@ function ImgToWordDetailContent() {
   </>;
 }
 
+function PdfToWordDetailContent() {
+  return <>
+    <p>PDF files are made for consistent viewing, while Word documents are made for editing. When a report, form, invoice, resume, or set of notes needs a correction, a browser-based DOCX workflow is more useful than retyping the whole page. This converter reads the text layer that already exists in a text-based PDF, keeps important visible graphics, and prepares a Word file you can inspect before sharing.</p>
+    <h3>When an editable Word document helps</h3>
+    <p>Use the workflow when you need to correct a name, update a date, reuse a paragraph, add a comment, or copy information into another system. It is also useful for turning a finished report into a working draft, moving a contract into a review process, or preparing a document for a colleague who needs to add a heading or make a small change.</p>
+    <p>The result is not intended to replace the original PDF as a visual master. Keep the source file for reference, especially when it includes signatures, stamps, page numbers, columns, tables, or carefully positioned artwork. The editable file is a practical working copy: it gives text a useful next step while preserving enough of the page appearance to compare the two versions.</p>
+    <h3>What a text-based PDF can preserve</h3>
+    <p>A text-based PDF contains selectable characters in addition to its page graphics. The browser can read that text layer and place the words into editable controls in the DOCX. With Preserve layout selected, the rendered page graphics remain behind those controls, so logos, charts, shaded areas, illustrations, and other visual details stay visible while the recognized text can be corrected.</p>
+    <p>PDF and Word use different layout models, so a perfect one-to-one reconstruction is not possible for every file. Embedded fonts, complex tables, multi-column sections, footnotes, unusual line spacing, and transparency effects can behave differently after conversion. Treat the first download as an editable starting point, then compare a few representative pages with the source before making extensive changes.</p>
+    <h3>When OCR is necessary</h3>
+    <p>A scanned PDF is usually a collection of page images rather than a document with selectable text. If you cannot drag across a sentence or copy a word in a PDF viewer, there may be no text layer for the browser to extract. The visible scan can still be carried into the document, but the words will not automatically become editable just because the file has a .pdf extension.</p>
+    <p>Scanned pages need optical character recognition (OCR) to turn pixels into words. OCR is especially sensitive to blur, skew, low contrast, handwriting, decorative type, and dense tables. If the source is a scan, use the clearest original, keep pages upright, and plan to check names, numbers, dates, punctuation, and short labels after recognition. A converted document should be proofread before it becomes an official or final copy.</p>
+    <h3>Choose Preserve layout or Flowing text</h3>
+    <p>Preserve layout is the better starting point for forms, invoices, certificates, resumes, presentations, and pages where location matters. It keeps the page-sized visual layer and positions editable text boxes over the source. Flowing text is better when the main goal is to rework paragraphs, combine content from several pages, or create a simpler draft that behaves more like an ordinary Word document.</p>
+    <p>The Page range control is useful for a quick sample or a long document. Choose First page to check the conversion style before processing the complete file, or choose All pages when the whole document is ready. Current browser conversion supports PDFs with up to 100 pages; a smaller range can also make the first review faster.</p>
+    <h3>Prepare and review the source file</h3>
+    <p>Start with the original PDF rather than a screenshot or a copy that has been compressed several times. Remove passwords when you are authorized to do so, confirm that the file opens normally, and check a page with text, a page with graphics, and a page with a table if the document contains all three. Encrypted, damaged, or unusually complex PDFs may need to be repaired or opened in a desktop editor before they can be read reliably.</p>
+    <p>After the download, open the DOCX in a compatible Word editor and compare the first, middle, and last pages. Search for a word that should be present, inspect the text boxes around headings and labels, confirm that graphics are visible, and check the page count. If the document will be submitted to a portal or sent to a client, also use a clear filename and keep the original until the editable copy passes that check.</p>
+    <h3>A private, browser-based workflow</h3>
+    <p>No account or desktop installation is required. Select one PDF, choose the text source, layout, and page range, start the conversion, and download the DOCX when it is ready. The current browser workflow processes the file on your device instead of uploading it to the site. For sensitive paperwork, use a trusted device, clear the queue when finished, and read the privacy page for the current file-handling limits.</p>
+  </>;
+}
+
 function PngToPdfDetailContent() {
   return <>
     <p>PNG files are a strong source format for screenshots, diagrams, interface mockups, logos, charts, and text-heavy graphics. A PDF is often easier to print, submit, archive, or share as one predictable document. This browser workflow turns each selected PNG into a page, keeps the upload order, and lets you review the document settings before downloading.</p>
@@ -439,6 +480,18 @@ function PdfToImgDetailContent() {
     <h3>A simple browser-based workflow</h3>
     <p>Choose the PDF, select JPG or PNG, set the resolution, choose all pages or the first page, and start the conversion. No account or desktop installation is required. The privacy page explains the site&apos;s file-handling practices, and the browser prepares the output on the device before the download begins.</p>
     <p>Keep the original PDF until the image files have been checked. Open a few outputs at full size, confirm the page count, compare small text with the source, and use a clear filename or archive name before sending the result to a client, portal, support team, or website.</p>
+  </>;
+}
+
+function CompressPdfDetailContent() {
+  return <>
+    <p>PDF files can become difficult to email or upload when they contain large images, repeated metadata, or more detail than the destination needs. This browser workflow rewrites the document locally with a quality profile, so you can create a smaller copy while keeping the original available for comparison.</p>
+    <h3>What browser compression changes</h3>
+    <p>Light, Balanced, and Strong profiles reduce image payloads at different levels. Text and vector content should remain crisp, while photographs and scans may be resized or recompressed. Removing metadata can also reduce unnecessary document information, but it does not restore detail that was already missing from the source.</p>
+    <h3>Choose a profile for the destination</h3>
+    <p>Use Light when visual quality matters most, Balanced for ordinary email and sharing, and Strong when an upload limit is the priority. If the source is already optimized, the output may be similar in size or even slightly larger because the PDF has to be rewritten.</p>
+    <h3>Review the smaller file</h3>
+    <p>Open the downloaded PDF before sending it. Check small text, photographs, page count, transparency, and any signatures or fine lines that matter. Keep the original until the compressed copy opens correctly and meets the size and readability requirements of the service where it will be used.</p>
   </>;
 }
 
@@ -495,6 +548,14 @@ function getOptionDetail(tool: ToolDefinition, option: string) {
       Quality: "Compare the rendered page at full size and keep the original PDF when the source scan is already blurry.",
     };
     return details[option] ?? "Choose the setting that matches the destination, detail level, and number of pages you need.";
+  }
+  if (tool.slug === "pdf-to-word") {
+    const details: Record<string, string> = {
+      "Selectable text": "Best for PDFs with a text layer. The browser extracts those words into editable DOCX controls; scanned pages still need OCR.",
+      Layout: "Preserve layout keeps page graphics behind editable text boxes, while Flowing text creates simpler paragraphs for substantial rewriting.",
+      "Page range": "Choose All pages for the complete file, or First page to test a long document before downloading the full result.",
+    };
+    return details[option] ?? "Choose the setting that matches the source PDF and how much editing the Word document needs.";
   }
   return `Select ${option.toLowerCase()} based on the format, readability, or sharing requirements of the finished file.`;
 }
