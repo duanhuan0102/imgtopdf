@@ -41,6 +41,21 @@ test("server-renders an SEO-ready img to PDF homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
+test("keeps internal navigation on native anchors", async () => {
+  const pageSources = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/tool-page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/privacy/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/terms/page.tsx", import.meta.url), "utf8"),
+  ]);
+  for (const source of pageSources) assert.doesNotMatch(source, /from ["']next\/link["']/);
+
+  const response = await render();
+  const html = await response.text();
+  assert.match(html, /<a[^>]+href="\/image-to-pdf"/i);
+  assert.match(html, /<a[^>]+href="\/img-to-word"/i);
+});
+
 test("renders the keyword-focused image to PDF page with canonical metadata and related links", async () => {
   const response = await render("/image-to-pdf");
   assert.equal(response.status, 200);

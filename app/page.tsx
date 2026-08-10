@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./components/SiteLink";
 import { ToolWorkspace } from "./components/ToolWorkspace";
 import { getPublicToolPath, toolDefinitions, toolGroups } from "./tool-data";
 

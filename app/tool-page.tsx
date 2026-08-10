@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "./components/SiteLink";
 import { notFound } from "next/navigation";
 import { ToolWorkspace } from "./components/ToolWorkspace";
 import { getPublicToolPath, getPublicToolSlug, getTool, getToolSlugFromPath, toolDefinitions, type ToolDefinition } from "./tool-data";
