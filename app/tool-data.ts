@@ -104,7 +104,7 @@ export const toolDefinitions: ToolDefinition[] = [
     options: ["Page size", "Background", "Margins", "Fit"],
     related: ["img-to-pdf", "jpg-to-pdf", "webp-to-pdf", "tif-to-jpeg", "compress-pdf"],
     faqs: [
-      { question: "Will transparent PNGs keep their transparency?", answer: "The output page can use a configurable background. The conversion worker will make this choice explicit instead of silently changing the asset." },
+      { question: "Will transparent PNGs keep their transparency?", answer: "Transparent pixels are placed on a clean white PDF page so the result is predictable in document viewers and on paper." },
       { question: "Can I add more than one PNG?", answer: "Yes. Use the same multi-page queue as the main Image to PDF tool." },
     ],
   },
@@ -146,7 +146,7 @@ export const toolDefinitions: ToolDefinition[] = [
     related: ["pdf-to-word", "compress-pdf"],
     faqs: [
       { question: "Can I export just one PDF page?", answer: "Yes. Choose First page to export only the first page, or keep All pages to download every rendered page." },
-      { question: "Should I choose JPG or PNG?", answer: "JPG is smaller for photos. PNG is a better fit for screenshots, diagrams, and text-heavy pages." },
+      { question: "Should I choose JPG or PNG?", answer: "JPG is smaller for photos and web previews. PNG is a better fit for screenshots, diagrams, and text-heavy pages." },
     ],
   },
   {
@@ -163,12 +163,12 @@ export const toolDefinitions: ToolDefinition[] = [
     tone: "gold",
     group: "from-images",
     featured: true,
-    options: ["JPEG quality", "Color mode", "Background", "Resolution"],
+    options: ["JPEG quality", "Color mode", "Resolution"],
     related: ["img-to-pdf", "jpg-to-pdf", "png-to-pdf", "webp-to-pdf"],
     faqs: [
-      { question: "What is TIF to JPEG conversion?", answer: "It changes a TIF or TIFF image into a JPEG image that is easier to share, upload, and use on websites or apps." },
+      { question: "What can I do with a TIF or TIFF file?", answer: "You can create a JPEG copy that is easier to share, upload, and use on websites or apps while keeping the original TIFF as your source." },
       { question: "Are TIF and TIFF the same type of file?", answer: "TIF and TIFF are two filename extensions commonly used for the same Tagged Image File Format." },
-      { question: "Will JPEG be smaller than the original TIFF?", answer: "Usually yes. JPEG uses lossy compression, so the output is often much smaller while keeping suitable quality for everyday sharing. This tool converts the first page of a TIFF in your browser." },
+      { question: "Will JPEG be smaller than the original TIFF?", answer: "Usually yes. JPEG uses lossy compression, so the output is often much smaller while keeping suitable quality for everyday sharing. This browser workflow converts the first page of the source TIFF." },
     ],
   },
   {

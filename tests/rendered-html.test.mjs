@@ -64,11 +64,11 @@ test("renders the keyword-focused image to PDF page with canonical metadata and 
   const response = await render("/image-to-pdf");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /<title>Image to PDF Converter Online \| Free Online Tool \| imgtopdf\.org<\/title>/i);
+  assert.match(html, /<title>Image to PDF Converter \| Free, No Login \| imgtopdf\.org<\/title>/i);
   assert.match(html, /<link rel="canonical" href="https:\/\/imgtopdf\.org\/image-to-pdf"/i);
   assert.match(html, /<h1>Image to PDF Converter Online<\/h1>/i);
   assert.match(html, /Related Image to PDF tools, one click away\./i);
-  assert.match(html, /Upload Images for Image to PDF/i);
+  assert.match(html, /<h2>Upload Images for Image to PDF<\/h2>/i);
   assert.match(html, /Download starts automatically when ready/i);
   assert.match(html, /<h2>Image to PDF features<\/h2>/i);
   assert.match(html, /<h2>How to Convert Image to PDF<\/h2>/i);
@@ -97,11 +97,11 @@ test("renders the TIF to JPEG keyword landing page", async () => {
   const response = await render("/tif-to-jpeg");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /<title>TIF to JPEG Converter Online[^<]*Free Online Tool \| imgtopdf\.org<\/title>/i);
+  assert.match(html, /<title>TIF to JPEG Converter \| Free, No Login \| imgtopdf\.org<\/title>/i);
   assert.match(html, /<meta name="description"[^>]*TIF[^>]*TIFF/i);
   assert.match(html, /<link rel="canonical" href="https:\/\/imgtopdf\.org\/tif-to-jpeg"/i);
   assert.match(html, /<h1>TIF to JPEG Converter Online<\/h1>/i);
-  assert.match(html, /Upload TIF Images for TIF to JPEG/i);
+  assert.match(html, /Upload a TIF or TIFF file for TIF to JPEG/i);
   assert.match(html, /One TIF or TIFF/i);
   assert.match(html, /<h2>TIF to JPEG features<\/h2>/i);
   assert.match(html, /<h2>How to Convert TIF to JPEG<\/h2>/i);
@@ -116,16 +116,16 @@ test("renders the TIF to JPEG keyword landing page", async () => {
 
 test("keeps generic conversion pages aligned with their target keywords", async () => {
   const pages = [
-    ["/img-to-word", "Img to Word", "How to Convert Img to Word", "What Is Img to Word?"],
+    ["/img-to-word", "Img to Word", "How to Convert Img to Word", "What Is Img to Word?", "Image to Word"],
     ["/jpg-to-pdf", "JPG to PDF", "How to Convert JPG to PDF", "What Is JPG to PDF?"],
     ["/png-to-pdf", "PNG to PDF", "How to Convert PNG to PDF", "What Is PNG to PDF?"],
     ["/webp-to-pdf", "WebP to PDF", "How to Convert WebP to PDF", "What Is WebP to PDF?"],
-    ["/pdf-to-img", "PDF to Image", "How to Convert PDF to Image", "What Is PDF to Image?"],
+    ["/pdf-to-img", "PDF to Img", "How to Convert PDF to Img", "What Is PDF to Img?"],
     ["/pdf-to-word", "PDF to Word", "How to Convert PDF to Word", "What Is PDF to Word?"],
     ["/compress-pdf", "Compress PDF", "How to Compress PDF Online", "What Does Compress PDF Do?"],
   ];
 
-  for (const [pathname, keyword, guideTitle, detailTitle] of pages) {
+  for (const [pathname, keyword, guideTitle, detailTitle, relatedLabel = keyword] of pages) {
     const response = await render(pathname);
     assert.equal(response.status, 200);
     const html = await response.text();
@@ -137,7 +137,8 @@ test("keeps generic conversion pages aligned with their target keywords", async 
     assert.match(html, new RegExp(`<h2>${guideTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}<\\/h2>`, "i"));
     assert.match(html, new RegExp(`<h2>${detailTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}<\\/h2>`, "i"));
     assert.match(html, new RegExp(`<h2>${escapedKeyword} FAQ<\\/h2>`, "i"));
-    assert.match(html, new RegExp(`Related ${escapedKeyword} tools, one click away\\.`, "i"));
+    const escapedRelatedLabel = relatedLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.match(html, new RegExp(`Related ${escapedRelatedLabel} tools, one click away\\.`, "i"));
   }
 });
 

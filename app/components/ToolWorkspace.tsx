@@ -259,7 +259,7 @@ export function ToolWorkspace({ tool, headingKeyword = "img" }: { tool: ToolDefi
           }}
         >
           <div className="dropzone-icon">↥</div>
-          <h3>{uploadHeading}</h3>
+          <h2>{uploadHeading}</h2>
           <p>or choose files from your device</p>
           <span className="dropzone-meta">{tool.acceptedLabel}</span>
         </div>
@@ -1492,10 +1492,10 @@ function formatBytes(bytes: number) {
 function getUploadHeading(tool: ToolDefinition, headingKeyword: "img" | "image") {
   if (tool.slug === "img-to-pdf") return headingKeyword === "image" ? "Upload Images for Image to PDF" : "Upload Images for Img to PDF";
   if (tool.slug === "img-to-word") return "Upload Images for Img to Word";
-  if (tool.slug === "pdf-to-img") return "Upload a PDF for PDF to Image";
+  if (tool.slug === "pdf-to-img") return "Upload a PDF for PDF to Img";
   if (tool.slug === "pdf-to-word") return "Upload a PDF for PDF to Word";
   if (tool.slug === "compress-pdf") return "Upload a PDF to Compress PDF";
-  if (tool.slug === "tif-to-jpeg") return "Upload TIF Images for TIF to JPEG";
+  if (tool.slug === "tif-to-jpeg") return "Upload a TIF or TIFF file for TIF to JPEG";
   return tool.inputLabel;
 }
 

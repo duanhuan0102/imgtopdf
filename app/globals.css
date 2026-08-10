@@ -16,6 +16,8 @@
   --radius-md: 16px;
 }
 
+.dropzone h2 { margin: 16px 0 5px; font-size: 21px; letter-spacing: -.04em; }
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
