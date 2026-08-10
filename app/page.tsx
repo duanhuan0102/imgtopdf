@@ -12,8 +12,8 @@ export default function Home() {
       <section className="hero-section">
         <div className="container hero-tool-layout">
           <div className="hero-center-copy">
-            <div className="eyebrow"><span className="eyebrow-dot" /> Convert img to PDF online</div>
-            <h1>Free Img to PDF Converter Online</h1>
+            <div className="eyebrow"><span className="eyebrow-dot" /> Convert image to PDF online</div>
+            <h1>Free Image to PDF Converter Online</h1>
             <p>Convert photos, screenshots, and scans into a clean PDF online. Free to use, no login required, and ready in your browser.</p>
           </div>
 
@@ -33,7 +33,7 @@ export default function Home() {
         <div className="container">
           <div className="section-heading split-heading">
             <div><span className="section-kicker">More image and PDF tools</span><h2>Image and PDF Conversion Tools</h2></div>
-            <p>Start with img to PDF, then move from images to Word or from PDF to images and documents. Each tool has a focused page and a clear next step.</p>
+            <p>Start with Image to PDF, then move from images to Word or from PDF to images and documents. Each tool has a focused page and a clear next step.</p>
           </div>
           <div className="tool-groups">
             {toolGroups.map((group) => (
@@ -52,11 +52,11 @@ export default function Home() {
 
       <section className="steps-section" id="how-to-use">
         <div className="container steps-layout">
-          <div className="steps-intro"><span className="section-kicker">How to use img to PDF</span><h2>How to Convert Img to PDF Online</h2><p>Convert your images in four clear steps. No software download, no account, and no mystery about what happens next.</p><div className="guide-promise"><span>✓</span><div><strong>Free and login-free</strong><small>Use the tool immediately, then download your result.</small></div></div><Link className="text-link" href="/image-to-pdf">See the full img to PDF guide <span>→</span></Link></div>
+          <div className="steps-intro"><span className="section-kicker">How to use Image to PDF</span><h2>How to Convert Image to PDF Online</h2><p>Convert your images in four clear steps. No software download, no account, and no mystery about what happens next.</p><div className="guide-promise"><span>✓</span><div><strong>Free and login-free</strong><small>Use the tool immediately, then download your result.</small></div></div><Link className="text-link" href="/image-to-pdf">See the full Image to PDF guide <span>→</span></Link></div>
           <div className="steps-list">
-            <Step number="01" title="Select Images for Img to PDF" text="Drag files in, choose them from your device, or add more as you go." />
-            <Step number="02" title="Arrange Img to PDF Pages" text="Move pages up or down so the first image becomes page one." />
-            <Step number="03" title="Choose Img to PDF Layout" text="Set the page size, orientation, and margins before converting." />
+            <Step number="01" title="Select Images for Image to PDF" text="Drag files in, choose them from your device, or add more as you go." />
+            <Step number="02" title="Arrange Image to PDF Pages" text="Move pages up or down so the first image becomes page one." />
+            <Step number="03" title="Choose Image to PDF Layout" text="Set the page size, orientation, and margins before converting." />
             <Step number="04" title="Download Your PDF" text="Click convert once and your finished PDF downloads when it is ready." />
           </div>
         </div>
@@ -76,9 +76,9 @@ export default function Home() {
 
       <section className="faq-section">
         <div className="container faq-layout">
-          <div><span className="section-kicker">Good to know</span><h2>Img to PDF FAQ</h2><p>These answers are short on purpose. The tool is here when you are ready.</p></div>
+          <div><span className="section-kicker">Good to know</span><h2>Image to PDF FAQ</h2><p>These answers are short on purpose. The tool is here when you are ready.</p></div>
           <div className="faq-list">
-            <details open><summary>What is img to PDF?</summary><p>Img to PDF means converting one or more image files—such as JPG, PNG, or WebP—into a PDF document. A multi-page PDF is useful for sharing, printing, or uploading images as one file.</p></details>
+            <details open><summary>What is Image to PDF?</summary><p>Image to PDF means converting one or more image files—such as JPG, PNG, or WebP—into a PDF document. A multi-page PDF is useful for sharing, printing, or uploading images as one file.</p></details>
             <details><summary>Can I combine multiple images into one PDF?</summary><p>Yes. Add multiple images, drag them into the order you want, then convert. The first image becomes page one.</p></details>
             <details><summary>Do I need to install software?</summary><p>No installation is needed for the web workflow. This first version keeps the interface ready for a secure upload and conversion API.</p></details>
             <details><summary>What else can I do with my files?</summary><p>Use <Link href="/img-to-word">image to Word</Link> for editable documents, <Link href="/pdf-to-img">PDF to image</Link> for page exports, or <Link href="/compress-pdf">compress PDF</Link> before sending a large file.</p></details>
@@ -96,7 +96,7 @@ function SiteHeader() {
 }
 
 function SiteFooter() {
-  return <footer className="site-footer"><div className="container footer-main"><div className="footer-brand"><Link href="/" className="brand"><span className="brand-mark"><i /><i /><i /></span><span>imgtopdf<span className="brand-dot">.</span>org</span></Link><p>Small, focused file tools for everyday work.</p></div><div className="footer-links"><div><strong>Convert</strong><Link href="/image-to-pdf">Img to PDF</Link><Link href="/img-to-word">Img to Word</Link><Link href="/pdf-to-img">PDF to Image</Link></div><div><strong>PDF tools</strong><Link href="/compress-pdf">Compress PDF</Link><Link href="/pdf-to-word">PDF to Word</Link><Link href="/jpg-to-pdf">JPG to PDF</Link></div><div><strong>Company</strong><Link href="#guides">Guides</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div></div></div><div className="container footer-bottom"><span>© 2026 imgtopdf.org</span><span>Built for clear file workflows.</span></div></footer>;
+  return <footer className="site-footer"><div className="container footer-main"><div className="footer-brand"><Link href="/" className="brand"><span className="brand-mark"><i /><i /><i /></span><span>imgtopdf<span className="brand-dot">.</span>org</span></Link><p>Small, focused file tools for everyday work.</p></div><div className="footer-links"><div><strong>Convert</strong><Link href="/image-to-pdf">Image to PDF</Link><Link href="/img-to-word">Img to Word</Link><Link href="/pdf-to-img">PDF to Image</Link></div><div><strong>PDF tools</strong><Link href="/compress-pdf">Compress PDF</Link><Link href="/pdf-to-word">PDF to Word</Link><Link href="/jpg-to-pdf">JPG to PDF</Link></div><div><strong>Company</strong><Link href="#guides">Guides</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div></div></div><div className="container footer-bottom"><span>© 2026 imgtopdf.org</span><span>Built for clear file workflows.</span></div></footer>;
 }
 
 function ToolCard({ tool }: { tool: (typeof toolDefinitions)[number] }) {

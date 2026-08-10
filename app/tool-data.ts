@@ -20,8 +20,8 @@ export type ToolDefinition = {
 export const toolDefinitions: ToolDefinition[] = [
   {
     slug: "img-to-pdf",
-    title: "Convert Img to PDF Online",
-    shortTitle: "Img to PDF",
+    title: "Convert Image to PDF Online",
+    shortTitle: "Image to PDF",
     eyebrow: "Image → PDF",
     description:
       "Image to PDF conversion turns JPG, PNG, and WebP images into a polished PDF. Add multiple pages, arrange them in order, and choose a layout before you download.",
@@ -80,7 +80,7 @@ export const toolDefinitions: ToolDefinition[] = [
     related: ["img-to-pdf", "png-to-pdf", "webp-to-pdf", "tif-to-jpeg", "compress-pdf"],
     faqs: [
       { question: "Can I convert several JPGs at once?", answer: "Yes. Upload multiple JPG files, order them, and create a single PDF document." },
-      { question: "Is JPG to PDF different from img to PDF?", answer: "JPG to PDF is the format-specific landing page. Img to PDF is the broader workflow for several image formats." },
+      { question: "Is JPG to PDF different from Image to PDF?", answer: "JPG to PDF is the format-specific landing page. Image to PDF is the broader workflow for several image formats." },
     ],
   },
   {
@@ -101,7 +101,7 @@ export const toolDefinitions: ToolDefinition[] = [
     related: ["img-to-pdf", "jpg-to-pdf", "webp-to-pdf", "tif-to-jpeg", "compress-pdf"],
     faqs: [
       { question: "Will transparent PNGs keep their transparency?", answer: "The output page can use a configurable background. The conversion worker will make this choice explicit instead of silently changing the asset." },
-      { question: "Can I add more than one PNG?", answer: "Yes. Use the same multi-page queue as the main img to PDF tool." },
+      { question: "Can I add more than one PNG?", answer: "Yes. Use the same multi-page queue as the main Image to PDF tool." },
     ],
   },
   {
