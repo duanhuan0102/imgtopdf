@@ -1,0 +1,212 @@
+npm warn Unknown env config "min-release-age". This will stop working in the next major version of npm.
+[vinext] Missing App Router element entry during render: layout:/
+[2m12:51:57[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <BfcacheSlotBoundary id="route:/" content={<Context>}>
+      <meta>
+      <title>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <link>
+      <link>
+      <link>
+      <link>
+      <meta>
+      <AwaitAppRenderDependencies>
+        <GlobalErrorBoundary fallback={function DefaultGlobalError}>
+          <ErrorBoundaryInner pathname="/" fallback={function DefaultGlobalError} isImplicitRootErrorBoundary={true}>
+            <ErrorBoundary fallback={function DefaultGlobalError}>
+              <ErrorBoundaryInner pathname="/" resetKey={undefined} fallback={function DefaultGlobalError}>
+                <LayoutSegmentProvider providerId="layout:/" segmentMap={{children:[...]}}>
+                  <Slot id="layout:/">
+                    <BfcacheSlotBoundary id="layout:/" content={<Context>}>
+                      <link>
+                      <RemoveDuplicateServerCss>
+                      <AwaitAppRenderDependencies>
+                        <AppComponentDependencyBarrier>
+                          <RootLayout>
+                            <html
++                             lang="en"
+-                             lang={null}
+                            >
+                              ...
+                                <PageInvoker>
+                                  <AwaitAppRenderDependencies>
++                                   <main>
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+[2m12:52:07[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <BfcacheSlotBoundary id="route:/" content={<Context>}>
+      <meta>
+      <title>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <link>
+      <link>
+      <link>
+      <link>
+      <meta>
+      <AwaitAppRenderDependencies>
+        <GlobalErrorBoundary fallback={function DefaultGlobalError}>
+          <ErrorBoundaryInner pathname="/" fallback={function DefaultGlobalError} isImplicitRootErrorBoundary={true}>
+            <ErrorBoundary fallback={function DefaultGlobalError}>
+              <ErrorBoundaryInner pathname="/" resetKey={undefined} fallback={function DefaultGlobalError}>
+                <LayoutSegmentProvider providerId="layout:/" segmentMap={{children:[...]}}>
+                  <Slot id="layout:/">
+                    <BfcacheSlotBoundary id="layout:/" content={<Context>}>
+                      <link>
+                      <RemoveDuplicateServerCss>
+                      <AwaitAppRenderDependencies>
+                        <AppComponentDependencyBarrier>
+                          <RootLayout>
+                            <html
++                             lang="en"
+-                             lang={null}
+                            >
+                              ...
+                                <PageInvoker>
+                                  <AwaitAppRenderDependencies>
++                                   <main>
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+[2m12:52:12[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <BfcacheSlotBoundary id="route:/" content={<Context>}>
+      <meta>
+      <title>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <meta>
+      <link>
+      <link>
+      <link>
+      <link>
+      <meta>
+      <AwaitAppRenderDependencies>
+        <GlobalErrorBoundary fallback={function DefaultGlobalError}>
+          <ErrorBoundaryInner pathname="/" fallback={function DefaultGlobalError} isImplicitRootErrorBoundary={true}>
+            <ErrorBoundary fallback={function DefaultGlobalError}>
+              <ErrorBoundaryInner pathname="/" resetKey={undefined} fallback={function DefaultGlobalError}>
+                <LayoutSegmentProvider providerId="layout:/" segmentMap={{children:[...]}}>
+                  <Slot id="layout:/">
+                    <BfcacheSlotBoundary id="layout:/" content={<Context>}>
+                      <link>
+                      <RemoveDuplicateServerCss>
+                      <AwaitAppRenderDependencies>
+                        <AppComponentDependencyBarrier>
+                          <RootLayout>
+                            <html
++                             lang="en"
+-                             lang={null}
+                            >
+                              ...
+                                <PageInvoker>
+                                  <AwaitAppRenderDependencies>
++                                   <main>
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
