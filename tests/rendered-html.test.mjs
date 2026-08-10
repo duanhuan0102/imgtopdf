@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+const workerUrl = new URL("../.vercel/output/functions/__server.func/index.mjs", import.meta.url);
 
 async function render(pathname = "/") {
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -31,10 +31,14 @@ test("server-renders an SEO-ready img to PDF homepage", async () => {
   assert.match(html, /Upload Images for Img to PDF/i);
   assert.match(html, /<h2>Image and PDF Conversion Tools<\/h2>/i);
   assert.match(html, /<h2>How to Convert Img to PDF Online<\/h2>/i);
-  assert.match(html, /<h2>Related Image to PDF and PDF Tools<\/h2>/i);
+  assert.match(html, /<h2>Related Img to PDF and PDF Tools<\/h2>/i);
   assert.match(html, /<h2>Img to PDF FAQ<\/h2>/i);
-  assert.match(html, /Image to PDF and Image Tools/i);
+  assert.match(html, /Img to PDF and Image Tools/i);
   assert.match(html, /PDF to Image and PDF Tools/i);
+  assert.match(html, /"@type":"WebSite"/i);
+  assert.match(html, /"@type":"SoftwareApplication"/i);
+  assert.match(html, /"@type":"HowTo"/i);
+  assert.match(html, /"@type":"FAQPage"/i);
   assert.doesNotMatch(html, /One upload\. One clean PDF\./i);
   assert.doesNotMatch(html, /100% free to try/i);
   assert.match(html, /Download starts automatically when ready/i);

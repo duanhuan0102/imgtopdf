@@ -20,11 +20,11 @@ export type ToolDefinition = {
 export const toolDefinitions: ToolDefinition[] = [
   {
     slug: "img-to-pdf",
-    title: "Convert Image to PDF Online",
-    shortTitle: "Image to PDF",
+    title: "Convert Img to PDF Online",
+    shortTitle: "Img to PDF",
     eyebrow: "Image → PDF",
     description:
-      "Image to PDF conversion turns JPG, PNG, and WebP images into a polished PDF. Add multiple pages, arrange them in order, and choose a layout before you download.",
+      "Img to PDF conversion turns JPG, PNG, and WebP images into a polished PDF. Add multiple pages, arrange them in order, and choose a layout before you download.",
     cardDescription: "Combine images into one PDF",
     inputLabel: "Drop images here",
     acceptedLabel: "JPG, PNG, WebP · up to 20 files",
@@ -80,6 +80,10 @@ export const toolDefinitions: ToolDefinition[] = [
     related: ["img-to-pdf", "png-to-pdf", "webp-to-pdf", "tif-to-jpeg", "compress-pdf"],
     faqs: [
       { question: "Can I convert several JPGs at once?", answer: "Yes. Upload multiple JPG files, order them, and create a single PDF document." },
+      { question: "Will my images keep their order?", answer: "Yes. Review the queue before exporting and move any page up or down until the document follows the sequence you need." },
+      { question: "Which page size should I choose?", answer: "Choose Auto when the source images have different dimensions. A4 is a practical default for many offices, while Letter is useful for common US and Canadian print workflows." },
+      { question: "Are JPG and JPEG both supported?", answer: "Yes. JPG and JPEG are two common filename extensions for the same image family, and both can be selected in this tool." },
+      { question: "Can I create the document without an account?", answer: "Yes. The browser workflow does not require registration or a subscription. Add your images, set the page options, and download the result when it is ready." },
       { question: "Is JPG to PDF different from Image to PDF?", answer: "JPG to PDF is the format-specific landing page. Image to PDF is the broader workflow for several image formats." },
     ],
   },
@@ -210,7 +214,7 @@ export const toolDefinitions: ToolDefinition[] = [
 ];
 
 export const toolGroups = [
-  { key: "from-images" as const, title: "Image to PDF and Image Tools", eyebrow: "Convert images into documents", icon: "↗" },
+  { key: "from-images" as const, title: "Img to PDF and Image Tools", eyebrow: "Convert images into documents", icon: "↗" },
   { key: "from-pdf" as const, title: "PDF to Image and PDF Tools", eyebrow: "Extract and edit PDF files", icon: "↙" },
   { key: "polish" as const, title: "Compress PDF Files", eyebrow: "Optimize your PDF output", icon: "✦" },
 ];

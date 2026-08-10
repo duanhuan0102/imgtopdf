@@ -11,6 +11,19 @@ const guideSteps = [
   { title: "Download and continue", text: "Your file downloads automatically, with a related tool ready for the next step." },
 ];
 
+type ToolSeo = {
+  title: string;
+  label: string;
+  keyword: string;
+  description: string;
+  benefitsTitle: string;
+  guideTitle: string;
+  detailTitle: string;
+  faqTitle: string;
+  metaTitle?: string;
+  metaDescription?: string;
+};
+
 export function generateStaticParams() {
   return [
     ...toolDefinitions.map((tool) => ({ slug: getPublicToolSlug(tool.slug) })),
@@ -25,21 +38,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!tool) return {};
   const seo = getToolSeo(tool, slug);
   const publicPath = slug === "imec-to-pdf" ? "/imec-to-pdf" : getPublicToolPath(tool.slug);
+  const pageTitle = seo.metaTitle ?? `${seo.title} | Free Online Tool`;
+  const pageDescription = seo.metaDescription ?? `${seo.description} Free to use with no login required.`;
   return {
-    title: `${seo.title} | Free Online Tool`,
-    description: `${seo.description} Free to use with no login required.`,
+    title: pageTitle,
+    description: pageDescription,
     alternates: { canonical: `https://imgtopdf.org${publicPath}` },
     openGraph: {
-      title: `${seo.title} | imgtopdf.org`,
-      description: `${seo.description} Free to use with no login required.`,
+      title: `${seo.metaTitle ?? seo.title} | imgtopdf.org`,
+      description: pageDescription,
       url: `https://imgtopdf.org${publicPath}`,
       type: "website",
       images: [{ url: "https://imgtopdf.org/og.png", width: 1536, height: 1024, alt: "imgtopdf.org | IMG TO PDF" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${seo.title} | imgtopdf.org`,
-      description: `${seo.description} Free to use with no login required.`,
+      title: `${seo.metaTitle ?? seo.title} | imgtopdf.org`,
+      description: pageDescription,
       images: ["https://imgtopdf.org/og.png"],
     },
   };
@@ -77,6 +92,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             </div>
           </div>
 
+          <h2 className="sr-only">{`Use the ${seo.label} converter`}</h2>
           <ToolWorkspace key={tool.slug} tool={tool} headingKeyword={seo.keyword === "image to pdf" || seo.keyword === "imec to pdf" ? "image" : "img"} />
           <p className="tool-workspace-note"><span>✓</span> {browserReady ? "Start instantly in your browser. No account, subscription, or software installation is needed." : "This page is ready for the production worker; no placeholder file is created while server-side conversion is offline."}</p>
         </div>
@@ -86,7 +102,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <div className="container">
           <div className="section-heading section-heading-centered"><span className="section-kicker">A simpler way to work</span><h2>{seo.benefitsTitle}</h2><p>Keep the important choices visible, then move from source file to finished download without extra steps.</p></div>
           <div className="tool-benefit-grid">
-            <Benefit icon="✓" title="Free from the first click" text={`Use ${seo.keyword} without a paid plan, trial countdown, or hidden sign-up screen.`} />
+            <Benefit icon="✓" title="Free from the first click" text={tool.slug === "jpg-to-pdf" ? "Convert your files without a paid plan, trial countdown, or hidden sign-up screen." : `Use ${seo.keyword} without a paid plan, trial countdown, or hidden sign-up screen.`} />
             <Benefit icon="✓" title="No account required" text="Open the page, add your file, and start working immediately. Your workflow does not depend on a profile." />
             <Benefit icon="✓" title="Clear controls" text={`Adjust ${tool.options.slice(0, 2).join(" and ").toLowerCase()} before you create the ${tool.outputLabel.toLowerCase()}.`} />
             <Benefit icon="✓" title="A clear finish" text={browserReady ? "The result is prepared in the workspace and the browser starts the download when conversion completes." : "The workspace explains the worker requirement instead of presenting an unverified result."} />
@@ -106,9 +122,11 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           <article>
             <span className="section-kicker">Learn before you convert</span>
             <h2>{seo.detailTitle}</h2>
-            <p>{seo.description} This free online workflow keeps the source files, ordering, and output settings in one focused place so you can finish the job without installing a desktop app.</p>
-            <p>It is designed for quick everyday tasks: documents from a phone camera, screenshots, scans, receipts, presentations, and files that need one more format before they can be shared.</p>
-            <div className="detail-points">{tool.options.map((option, index) => <div key={option}><span>0{index + 1}</span><div><strong>{option}</strong><p>Use a visible control when the output needs this adjustment.</p></div></div>)}</div>
+            {tool.slug === "jpg-to-pdf" ? <JpgDetailContent /> : <>
+              <p>{seo.description} This free online workflow keeps the source files, ordering, and output settings in one focused place so you can finish the job without installing a desktop app.</p>
+              <p>It is designed for quick everyday tasks: documents from a phone camera, screenshots, scans, receipts, presentations, and files that need one more format before they can be shared.</p>
+            </>}
+            <div className="detail-points">{tool.options.map((option, index) => <div key={option}><span>0{index + 1}</span><div><strong>{option}</strong><p>{getOptionDetail(tool, option)}</p></div></div>)}</div>
           </article>
           <aside className="privacy-card tool-facts-card"><span className="privacy-icon">✓</span><span className="section-kicker">At a glance</span><h3>Simple, free, and ready to try</h3><dl><div><dt>Input</dt><dd>{tool.acceptedLabel}</dd></div><div><dt>Output</dt><dd>{tool.outputLabel}</dd></div><div><dt>Account</dt><dd>Not required</dd></div><div><dt>Download</dt><dd>{browserReady ? "Starts automatically" : "Available when worker is connected"}</dd></div></dl><Link href="/privacy" className="text-link">Read the privacy promise <span>→</span></Link></aside>
         </div>
@@ -142,7 +160,7 @@ function GuideVisual({ tool }: { tool: ToolDefinition }) {
   return <div className="tool-guide-visual" aria-label="Four-step conversion preview"><div className="guide-visual-topline"><span>imgtopdf.org</span><b>FREE TOOL</b></div><div className="guide-visual-window"><div className={`guide-visual-file ${tool.tone}`}><span>{tool.icon}</span></div><strong>Upload → arrange → download</strong><small>No login · no installation</small><div className="guide-visual-progress"><i /><i /><i /><i /></div><div className="guide-visual-result"><span>✓</span><div><b>{tool.outputLabel}</b><small>Ready to download</small></div></div></div><div className="guide-visual-bottom"><span>FREE</span><span>PRIVATE</span><span>AUTO DOWNLOAD</span></div></div>;
 }
 
-function getToolSeo(tool: ToolDefinition, routeSlug = getPublicToolSlug(tool.slug)) {
+function getToolSeo(tool: ToolDefinition, routeSlug = getPublicToolSlug(tool.slug)): ToolSeo {
   if (routeSlug === "imec-to-pdf") {
     return {
       title: "IMEC to PDF Converter Online",
@@ -166,6 +184,21 @@ function getToolSeo(tool: ToolDefinition, routeSlug = getPublicToolSlug(tool.slu
       guideTitle: "How to Convert TIF to JPEG",
       detailTitle: "What Is TIF to JPEG?",
       faqTitle: "TIF to JPEG FAQ",
+    };
+  }
+
+  if (tool.slug === "jpg-to-pdf") {
+    return {
+      title: "JPG to PDF Converter Online",
+      label: "JPG to PDF",
+      keyword: "jpg to pdf",
+      metaTitle: "JPG to PDF Converter | Free, No Login",
+      metaDescription: "Convert JPG to PDF online for free. Combine JPG or JPEG files, reorder pages, choose size and margins, then download a clean document without an account.",
+      description: "Convert JPG and JPEG images to PDF online in seconds. Combine photos, scans, receipts, or forms, then reorder pages and choose a layout before downloading.",
+      benefitsTitle: "JPG to PDF features",
+      guideTitle: "How to Convert JPG to PDF",
+      detailTitle: "What Is JPG to PDF?",
+      faqTitle: "JPG to PDF FAQ",
     };
   }
 
@@ -205,6 +238,36 @@ function getToolFaqs(tool: ToolDefinition, routeSlug: string) {
 
 function getGuideSteps() {
   return guideSteps;
+}
+
+function JpgDetailContent() {
+  return <>
+    <p>JPG and JPEG files are convenient for photos because they are compact and widely supported. A PDF is often a better final format when several images need to be printed, emailed, archived, or uploaded as one document. This converter turns each selected image into a separate page and keeps the order you choose.</p>
+    <h3>When to turn JPG images into a PDF</h3>
+    <p>Use this page for receipts, invoices, signed forms, ID scans, travel documents, homework, menus, or photo handouts. Upload one picture for a one-page document or select a group for a multi-page file. The queue lets you add a missing page, remove an image, or move a page up or down before export.</p>
+    <p>A single document is useful when a website accepts PDF but not a group of photos. It gives the recipient one predictable download, makes paperwork easier to store, and reduces the chance that pages arrive separately or in the wrong sequence.</p>
+    <h3>Choose page settings for a clean result</h3>
+    <p>Page settings help the result match its destination. A4 is a practical choice for many office workflows, while Letter fits common US and Canadian print layouts. Portrait works well for documents and receipts; landscape suits wide photos and screenshots. Small margins give the image more room, while larger margins leave space for notes and printing.</p>
+    <p>For mixed image dimensions, Auto is a safe starting point. When every page must line up for printing, choose a fixed size and confirm the orientation. Original files usually produce a clearer result than screenshots or copies compressed several times.</p>
+    <h3>A simple multi-page workflow</h3>
+    <p>Add the source files, review their order, set the page size, orientation, margins, and quality, then create the document. The browser shows the working queue before conversion, so you can catch a duplicate or an out-of-order page early.</p>
+    <p>JPG and JPEG are the same image family and both are accepted. JPG is usually a good fit for photographs and scans with many colors. For screenshots, diagrams, or transparent graphics, the PNG converter may be a better choice; WebP files have their own dedicated page.</p>
+    <p>No desktop installation or account is required. Select the images, confirm the settings, create the PDF, and download it when the browser finishes. The privacy page explains the site&apos;s file-handling and download practices. For documents with small text, start with a sharp original scan and review the downloaded file before sending it.</p>
+    <p>If you are preparing a batch for printing, keep the original files until you have checked the final document. Open a few pages at full size, confirm that the first page and orientation are correct, and make sure the file name is clear before sharing it with a client, school, office, or travel provider.</p>
+  </>;
+}
+
+function getOptionDetail(tool: ToolDefinition, option: string) {
+  if (tool.slug === "jpg-to-pdf") {
+    const details: Record<string, string> = {
+      "Page size": "Choose Auto for mixed source dimensions, or select A4 or Letter when the document must match a print standard.",
+      Orientation: "Use portrait for forms and receipts, or landscape for wide photos and screenshots.",
+      Margins: "Keep small margins for larger images, or choose more space when the printed document needs room for notes.",
+      Quality: "Use a higher setting for small text and detailed scans, then balance file size against readability before sharing.",
+    };
+    return details[option] ?? "Choose the setting that best matches the way you plan to print or share the document.";
+  }
+  return "Use a visible control when the output needs this adjustment.";
 }
 
 function buildStructuredData(tool: ToolDefinition, keyword: string, faqs = tool.faqs, routeSlug = getPublicToolSlug(tool.slug), steps = getGuideSteps()) {
