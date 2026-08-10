@@ -1,5 +1,6 @@
 process.env.NITRO_PRESET = "vercel";
 
-const { build } = await import("vite");
+const { createBuilder } = await import("vite");
 
-await build();
+const builder = await createBuilder();
+await builder.buildApp();
